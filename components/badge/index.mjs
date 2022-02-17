@@ -1,10 +1,4 @@
-const badgeOptions = {
-  frontText: '',
-  backText: '',
-  color: '',
-  logo: false,
-  style: false
-}
+
 
 class Badge {
   static get newBadgeOptions() {
@@ -27,3 +21,5 @@ class Badge {
 
   }
 }
+
+export { Badge, badgeOptions }
