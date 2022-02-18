@@ -123,7 +123,7 @@ class Badge implements BadgeInterface {
     return this.toMarkdown;
   }
 
-  static async readDb(badgeName: string = ''): Promise<Array<Badge> | Badge | boolean> {
+  static async readDb(badgeName: string = ''): Promise<Array<Badge> | Badge | false> {
     const db = JSON.parse(await readFile('./saved-badges.json', 'utf8'));
     if (badgeName === '') return db;
 
@@ -132,6 +132,7 @@ class Badge implements BadgeInterface {
     })
 
     return badge.length === 0 ? false : new Badge(badge[0]);
+
   }
 }
 

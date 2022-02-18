@@ -1,14 +1,14 @@
 type Style = "plastic" | "flat" | "flat-square" | "for-the-badge" | "social" | string
 
 interface TextOptionInterface {
-  front: string|false
-  back: string|false
+  front: string
+  back: string
 }
 
 interface ColorOptionInterface {
-  front: string|false
-  back: string|false
-  logo: string|false
+  front: string
+  back: string
+  logo: string
 }
 
 export interface BadgeInterface {
