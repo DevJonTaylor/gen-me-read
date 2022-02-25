@@ -1,4 +1,4 @@
-import {Header} from "../index";
+import {Header, Markdown} from "../index";
 
 describe('Markdown', () => {
   test('Testing p', () => {
@@ -11,5 +11,29 @@ describe('Markdown', () => {
 This is a paragraph for the definition of sup project
 `);
       });
+  })
+
+  test('Testing bold', () => {
+    const p = new Markdown();
+
+    p.text('y0 homie').bold()
+
+    expect(p.toString()).toBe('**y0 homie**\n');
+  })
+
+  test('Testing italic', () => {
+    const p = new Markdown();
+
+    p.text('y0 homie').italic()
+
+    expect(p.toString()).toBe('*y0 homie*\n');
+  })
+
+  test('Testing bold and italic', () => {
+    const p = new Markdown();
+
+    p.text('y0 homie').bold().italic()
+
+    expect(p.toString()).toBe('***y0 homie***\n');
   })
 })

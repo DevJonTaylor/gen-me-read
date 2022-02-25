@@ -9,6 +9,10 @@ class Markdown {
    */
   innerText: string = '';
 
+  isBold: boolean = false;
+
+  isItalic: boolean = false;
+
   /**
    * A reference to the root for this element.
    */
@@ -64,19 +68,23 @@ class Markdown {
   }
 
   /**
-   * A getter that returns the needed text as Markdown.
+   * Toggles bold on and off for the entire innerText.
+   * @return this for chaining.
    */
-  get render(): string {
-    return `${this.innerText}`;
+  bold(): this {
+    this.isBold = !this.isBold;
+
+    return this;
   }
 
   /**
-   * Created so that the element can be added to a string and automatically render.
+   * Toggles italic on and off for the entire innerText.
+   * @return this for chaining.e
    */
-  toString(): string {
-    if(this.children.length > 0)
-      return `${this.render}\n${this.children.join('')}`
-    return `${this.render}\n`;
+  italic(): this {
+    this.isItalic = !this.isItalic;
+
+    return this;
   }
 
   /**
@@ -105,6 +113,29 @@ class Markdown {
    */
   image(): Promise<Image> {
     return new Promise(res => res(new Image(this)));
+  }
+
+  /**
+   * Created so that the element can be added to a string and automatically render.
+   */
+  toString(): string {
+    if(this.children.length > 0)
+      return `${this.render}\n${this.children.join('')}`
+    return `${this.render}\n`;
+  }
+
+  /**
+   * A getter that returns the needed text as Markdown.
+   */
+  get render(): string {
+    let text = this.innerText;
+
+    if(this.isItalic)
+      text = `*${text}*`;
+
+    if(this.isBold)
+      text = `**${text}**`;
+    return text;
   }
 }
 
