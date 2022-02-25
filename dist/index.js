@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  *   'Description',
  *   'Table of Contents',
@@ -10,31 +9,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
  *   'Tests',
  *   'Questions'
  */
-const inquirer_1 = require("./inquirer");
-async function startPrompt() {
-    const prompt = new inquirer_1.Prompt();
-    return prompt
-        .input(input => {
-        return input
-            .name('title')
-            .message('Project Title: ')
-            .validate();
-    })
-        .checkbox(checkbox => {
-        return checkbox
-            .name('sections')
-            .message('Which sections would you like to add?')
-            .choice('Description', true)
-            .choice('Table of Contents', true)
-            .choice('Installation', true)
-            .choice('Usage', true)
-            .choice('License', true)
-            .choice('Contributing', true)
-            .choice('Tests', true)
-            .choice('Questions', true);
-    })
-        .start();
-}
-startPrompt()
-    .then(console.log)
-    .catch(console.log);
+Object.defineProperty(exports, "__esModule", { value: true });
+const markdown_1 = require("./components/markdown");
+const h1 = new markdown_1.Header();
+h1
+    .text('sup')
+    .header()
+    .then(h2 => h2.text('sup 2').header())
+    .then(h3 => h3.text('sup 3'))
+    .then(() => console.log(`${h1}`));

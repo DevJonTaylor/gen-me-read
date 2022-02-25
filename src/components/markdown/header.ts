@@ -1,4 +1,4 @@
-import { Markdown } from './markdown';
+import { Markdown } from './';
 
 /**
  * This class is a header.
@@ -6,6 +6,7 @@ import { Markdown } from './markdown';
  * It will not exceed six.
  */
 class Header extends Markdown {
+
   /**
    * This variable represents the header level.  How many # will be before the text.
    * It will not exceed six.

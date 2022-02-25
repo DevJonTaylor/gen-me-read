@@ -1,5 +1,4 @@
-import {Header} from "./header";
-
+import { Header } from "./";
 
 /**
  * Abstract class created for extending.
@@ -48,12 +47,18 @@ class Markdown {
   }
 
   /**
-   * Sets the string to the innerText.
+   * If append is false then this overwrites the text in place with the new string.
+   * If append is true then it adds it to the end including a space at the start of the new string.
    * @param str
+   * @param append
    * @return this for chaining.
    */
-  text(str: string): this {
-   this.innerText = str;
+  text(str: string, append: boolean = true): this {
+    if(append)
+      this.innerText += str;
+
+    else
+      this.innerText = str;
 
    return this;
   }
@@ -75,15 +80,17 @@ class Markdown {
   }
 
   /**
-   * Creates a Header and passes it as an argument to the function added.
-   * @param cb
-   * @return this for chaining
+   * Creates a new Markdown and returns a promise that returns the element.
    */
-  newHeader(cb: (header: Header) => void) {
-    const header = new Header(this);
-    cb(header);
+  p(): Promise<Markdown> {
+    return new Promise(res => res(new Markdown(this)))
+  }
 
-    return this;
+  /**
+   * Returns a promise that returns a Header element.
+   */
+  header(): Promise<Header> {
+    return new Promise(res => res(new Header(this)));
   }
 }
 

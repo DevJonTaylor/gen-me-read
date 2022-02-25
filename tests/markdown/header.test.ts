@@ -1,4 +1,4 @@
-import { Header } from "../../src/components/markdown/header";
+import { Header } from "../../src/components/markdown/";
 
 describe('Markdown', () => {
   test('toString', () => {
@@ -7,40 +7,42 @@ describe('Markdown', () => {
     expect(`${header}`).toBe('# sup\n');
   })
 
-  test('children', () => {
+  test('children', async () => {
     const header = new Header();
-    header.text('sup')
-      .newHeader((h2:Header) => {
-        h2.text('sup 2')
-          .newHeader((h3:Header) => {
-            h3.text('sup 3')
-          });
-      })
+    expect.assertions(1);
 
-    expect(`${header}`).toBe('# sup\n## sup 2\n### sup 3\n');
+    header.text('sup');
+    const h2 = await header.header();
+    const h3 = await h2.header();
+    h2.text('sup 2');
+    h3.text('sup 3');
+
+    expect(`${header}`).toBe(`# sup
+## sup 2
+### sup 3
+`);
   })
 
-  test('Does not exceed six headers', () => {
-    const header = new Header();
-    header.text('sup')
-      .newHeader(h2 => {
-        h2.text('sup 2')
-          .newHeader(h3 => {
-            h3.text('sup 3')
-              .newHeader(h4 => {
-                h4.text('sup 4')
-                  .newHeader(h5 => {
-                    h5.text('sup 5')
-                      .newHeader(h6 => {
-                        h6.text('sup 6')
-                          .newHeader(h7 => {
-                            h7.text('sup 7')
-                          })
-                      })
-                  })
-              })
-          })
-      })
-    expect(`${header}`).toBe(`# sup\n## sup 2\n### sup 3\n#### sup 4\n##### sup 5\n###### sup 6\n###### sup 7\n`);
+  test('Does not exceed sixth header', async () => {
+    expect.assertions(1);
+
+    const h1 = new Header();
+    const h2 = await h1.text('sup').header();
+    const h3 = await h2.text('sup 2').header();
+    const h4 = await h3.text('sup 3').header();
+    const h5 = await h4.text('sup 4').header();
+    const h6 = await h5.text('sup 5').header();
+    const h7 = await h6.text('sup 6').header();
+
+    h7.text('sup 7');
+
+    expect(`${h1}`).toBe(`# sup
+## sup 2
+### sup 3
+#### sup 4
+##### sup 5
+###### sup 6
+###### sup 7
+`);
   })
 })
