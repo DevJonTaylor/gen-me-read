@@ -9,9 +9,20 @@ class Markdown {
    */
   innerText: string = '';
 
+  /**
+   * Tells render if the innerText is bold.
+   */
   isBold: boolean = false;
 
+  /**
+   * Tells render if the innerText is italic
+   */
   isItalic: boolean = false;
+
+  /**
+   * Tells render if the innerText is strikethrough.
+   */
+  isStrike: boolean = false;
 
   /**
    * A reference to the root for this element.
@@ -88,6 +99,15 @@ class Markdown {
   }
 
   /**
+   * Toggles strikethrough on and off for the entire innerText.
+   */
+  strike(): this {
+    this.isStrike = !this.isStrike;
+
+    return this;
+  }
+
+  /**
    * Creates a new Markdown and returns a promise that returns the element.
    */
   p(): Promise<Markdown> {
@@ -130,11 +150,15 @@ class Markdown {
   get render(): string {
     let text = this.innerText;
 
+    if(this.isStrike)
+      text = `~~${text}~~`
+
     if(this.isItalic)
       text = `*${text}*`;
 
     if(this.isBold)
       text = `**${text}**`;
+
     return text;
   }
 }

@@ -29,11 +29,14 @@ This is a paragraph for the definition of sup project
     expect(p.toString()).toBe('*y0 homie*\n');
   })
 
-  test('Testing bold and italic', () => {
+  test('Testing strikethrough, bold, and italic combinations', () => {
     const p = new Markdown();
 
-    p.text('y0 homie').bold().italic()
+    p.text('y0 homie')
 
-    expect(p.toString()).toBe('***y0 homie***\n');
+    expect(p.bold().italic().strike().toString()).toBe('***~~y0 homie~~***\n');
+    expect(p.italic().toString()).toBe('**~~y0 homie~~**\n')
+    expect(p.italic().bold().toString()).toBe('*~~y0 homie~~*\n')
+    expect(p.strike().bold().toString()).toBe('***y0 homie***\n')
   })
 })
