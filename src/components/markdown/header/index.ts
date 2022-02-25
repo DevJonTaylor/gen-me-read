@@ -1,4 +1,4 @@
-import { Markdown } from './';
+import { Markdown } from '../index';
 
 /**
  * This class is a header.

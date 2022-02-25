@@ -1,4 +1,4 @@
-import { Header } from "./";
+import {Header, Image, Link} from "../index";
 
 /**
  * Abstract class created for extending.
@@ -55,7 +55,7 @@ class Markdown {
    */
   text(str: string, append: boolean = true): this {
     if(append)
-      this.innerText += str;
+      this.innerText += this.innerText === '' ? str : ` ${str}`;
 
     else
       this.innerText = str;
@@ -91,6 +91,20 @@ class Markdown {
    */
   header(): Promise<Header> {
     return new Promise(res => res(new Header(this)));
+  }
+
+  /**
+   * Returns a promise that returns a Link element.
+   */
+  link(): Promise<Link> {
+    return new Promise(res => res(new Link(this)));
+  }
+
+  /**
+   * Returns a promise that returns an Image element.
+   */
+  image(): Promise<Image> {
+    return new Promise(res => res(new Image(this)));
   }
 }
 

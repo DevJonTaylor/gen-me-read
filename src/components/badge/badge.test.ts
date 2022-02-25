@@ -1,4 +1,4 @@
-import { Badge } from "../src/components/badge";
+import { Badge } from "./index";
 
 const testBadge = {
   text: { front: 'Testing Badge', back: '03/06/2022' },
