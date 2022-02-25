@@ -4,13 +4,14 @@
   "description": "A simple README generators.  The goal is to quickly create a README based on specific options selected on the cli.",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc && ./dist/index",
+    "dev": "tsc -w & nodemon -q -w dist dist/main.js",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jon Taylor",
   "license": "MIT",
   "dependencies": {
+    "@types/inquirer": "^8.2.0",
     "inquirer": "^6.5.2"
   },
   "devDependencies": {

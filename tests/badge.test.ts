@@ -1,5 +1,4 @@
 import { Badge } from "../src/components/badge";
-import { startTest, TestTools } from "./toolset";
 
 const testBadge = {
   text: { front: 'Testing Badge', back: '03/06/2022' },
@@ -7,9 +6,9 @@ const testBadge = {
   logo: '',
   style: 'plastic'
 }
-const testBadgeString = '![Testing Badge](https://img.shields.io/badge/Testing_Badge-03/06/2022-c0c?colorA=303&style=plastic)';
+const testBadgeString = 'https://img.shields.io/badge/Testing_Badge-03/06/2022-c0c?colorA=303&style=plastic';
 
-startTest('Badge', () => {
+describe('Badge Class', () => {
 
   it('new Badge', () => {
     expect(new Badge(testBadge)).toBeInstanceOf(Badge);

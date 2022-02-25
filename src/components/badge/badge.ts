@@ -87,13 +87,10 @@ class Badge implements BadgeInterface {
     return queryPieces.length === 0 ? '' : `?${queryPieces.join('&')}`;
   }
 
-  get toMarkdown(): string {
+  get build(): string {
     const theArguments = [this.textOfTwo, !this.color.back ? '333' : this.color.back].filter(v => v !== '');
 
-    return [
-      this.box, '(', this.url, theArguments.join('-'), this.queries, ')'
-    ].filter(v => v !== '')
-      .join('');
+    return [this.url, theArguments.join('-'), this.queries].filter(v => v !== '').join('');
   }
 
   get toObject(): BadgeInterface {
@@ -120,7 +117,7 @@ class Badge implements BadgeInterface {
   }
 
   toString(): string {
-    return this.toMarkdown;
+    return this.build;
   }
 
   static async readDb(badgeName: string = ''): Promise<Array<Badge> | Badge | false> {

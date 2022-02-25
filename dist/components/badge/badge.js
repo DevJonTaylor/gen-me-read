@@ -70,12 +70,9 @@ class Badge {
         const queryPieces = [this.colorQueries, this.qStyle, this.qLogo].filter(v => v !== false);
         return queryPieces.length === 0 ? '' : `?${queryPieces.join('&')}`;
     }
-    get toMarkdown() {
+    get build() {
         const theArguments = [this.textOfTwo, !this.color.back ? '333' : this.color.back].filter(v => v !== '');
-        return [
-            this.box, '(', this.url, theArguments.join('-'), this.queries, ')'
-        ].filter(v => v !== '')
-            .join('');
+        return [this.url, theArguments.join('-'), this.queries].filter(v => v !== '').join('');
     }
     get toObject() {
         return {
@@ -99,7 +96,7 @@ class Badge {
             .replaceAll(' ', '_');
     }
     toString() {
-        return this.toMarkdown;
+        return this.build;
     }
     static async readDb(badgeName = '') {
         const db = JSON.parse(await (0, promises_1.readFile)('./saved-badges.json', 'utf8'));
