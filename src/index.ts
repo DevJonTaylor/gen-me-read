@@ -8,3 +8,8 @@
  *   'Tests',
  *   'Questions'
  */
+
+
+import {Badge} from "./components/badge";
+
+console.log(`${Badge.css.plastic()}`);

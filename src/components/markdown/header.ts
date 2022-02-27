@@ -1,4 +1,4 @@
-import { Markdown } from '../index';
+import Markdown from './markdown';
 
 /**
  * This class is a header.
@@ -17,7 +17,7 @@ class Header extends Markdown {
    * Basically the same as Markdown, except it checks the header level to ensure it is not greater than six.
    * @param parent
    */
-  constructor(parent?: Markdown | undefined) {
+  constructor(parent?: Markdown) {
     super(parent);
     if(!parent) return
 
@@ -26,6 +26,13 @@ class Header extends Markdown {
       if(this.headerLevel > 6)
         this.headerLevel = 6;
     }
+  }
+
+  /**
+   * Creates a new header and appends it as a child.
+   */
+  header(): Promise<Header> {
+    return new Promise(res => res(new Header(this)));
   }
 
   /**
@@ -38,4 +45,4 @@ class Header extends Markdown {
   }
 }
 
-export { Header }
+export { Header, Markdown }

@@ -1,5 +1,3 @@
-import {Header, Image, Link} from "../index";
-
 /**
  * Abstract class created for extending.
  */
@@ -25,30 +23,21 @@ class Markdown {
   isStrike: boolean = false;
 
   /**
-   * A reference to the root for this element.
-   */
-  root: Markdown = this;
-
-  /**
-   * A reference to the parent of this element.
-   */
-  parent: Markdown = this;
-
-  /**
    * Collection of elements that are children of this element.
    */
   children: Array<Markdown> = [];
 
-  /**
-   * @param parent The parent element of this element.
-   * If it is undefined then the element does not have a parent.
-   */
-  constructor(parent?: Markdown | undefined) {
+  constructor(parent?: Markdown) {
     if(!parent) return;
-    this.root = parent.root;
-    this.parent = parent;
 
-    this.parent.addChild(this);
+    parent.addChild(this);
+  }
+
+  /**
+   * Creates a new Markdown old that is accessible inside a promise.
+   */
+  p(): Promise<Markdown> {
+    return new Promise(res => res(new Markdown(this)));
   }
 
   /**
@@ -58,6 +47,7 @@ class Markdown {
    */
   addChild(child: Markdown): this {
     this.children.push(child);
+
     return this;
   }
 
@@ -108,34 +98,6 @@ class Markdown {
   }
 
   /**
-   * Creates a new Markdown and returns a promise that returns the element.
-   */
-  p(): Promise<Markdown> {
-    return new Promise(res => res(new Markdown(this)))
-  }
-
-  /**
-   * Returns a promise that returns a Header element.
-   */
-  header(): Promise<Header> {
-    return new Promise(res => res(new Header(this)));
-  }
-
-  /**
-   * Returns a promise that returns a Link element.
-   */
-  link(): Promise<Link> {
-    return new Promise(res => res(new Link(this)));
-  }
-
-  /**
-   * Returns a promise that returns an Image element.
-   */
-  image(): Promise<Image> {
-    return new Promise(res => res(new Image(this)));
-  }
-
-  /**
    * Created so that the element can be added to a string and automatically render.
    */
   toString(): string {
@@ -159,8 +121,8 @@ class Markdown {
     if(this.isBold)
       text = `**${text}**`;
 
-    return text;
+    return `${text}`;
   }
 }
 
-export { Markdown }
+export default Markdown

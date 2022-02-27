@@ -1,13 +1,17 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Header = void 0;
-const _1 = require("./");
+exports.Markdown = exports.Header = void 0;
+const markdown_1 = __importDefault(require("./markdown"));
+exports.Markdown = markdown_1.default;
 /**
  * This class is a header.
  * It will automatically adjust itself based on the header parents level.
  * It will not exceed six.
  */
-class Header extends _1.Markdown {
+class Header extends markdown_1.default {
     /**
      * Basically the same as Markdown, except it checks the header level to ensure it is not greater than six.
      * @param parent
@@ -26,6 +30,12 @@ class Header extends _1.Markdown {
             if (this.headerLevel > 6)
                 this.headerLevel = 6;
         }
+    }
+    /**
+     * Creates a new header and appends it as a child.
+     */
+    header() {
+        return new Promise(res => res(new Header(this)));
     }
     /**
      * Render adjusted to fit the header markdown.

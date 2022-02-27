@@ -1,21 +1,21 @@
-type Style = "plastic" | "flat" | "flat-square" | "for-the-badge" | "social" | string
+type BadgeStyleTypes = 'plastic' | 'flat' | 'flat-square' | 'for-the-badge' | 'social' | ''
 
 interface TextOptionInterface {
-  front: string
-  back: string
+  front?: string
+  back?: string
 }
 
 interface ColorOptionInterface {
-  front: string
-  back: string
-  logo: string
+  front?: string
+  back?: string
+  logo?: string
 }
 
 export interface BadgeInterface {
-  text: { front: string, back: string }
-  color: { front: string, back: string, logo: string }
-  logo: string
-  style: Style
+  text?: TextOptionInterface
+  color?: ColorOptionInterface
+  logo?: string
+  style?: BadgeStyleTypes
 }
 
-export { TextOptionInterface, ColorOptionInterface }
+export { TextOptionInterface, ColorOptionInterface, BadgeStyleTypes }

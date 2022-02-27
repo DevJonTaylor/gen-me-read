@@ -4,9 +4,9 @@
   "description": "A simple README generators.  The goal is to quickly create a README based on specific options selected on the cli.",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc -w & nodemon -q -w dist dist/main.js",
+    "dev": "nodemon --config nodemon.dev.json",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon --config nodemon.test.json"
   },
   "author": "Jon Taylor",
   "license": "MIT",

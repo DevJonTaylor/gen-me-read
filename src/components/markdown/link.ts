@@ -1,4 +1,4 @@
-import { Markdown } from "../";
+import Markdown from "./markdown";
 
 class Link extends Markdown {
   _url: string = '';
@@ -17,9 +17,12 @@ class Link extends Markdown {
     return `[${super.render}](${this._url})`;
   }
 
+  /**
+   * This needed to be overwritten to remove the newline.
+   */
   toString(): string {
     return this.render;
   }
 }
 
-export { Link }
+export { Markdown, Link }

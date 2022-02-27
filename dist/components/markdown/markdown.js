@@ -1,37 +1,39 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Markdown = void 0;
-const _1 = require("./");
 /**
  * Abstract class created for extending.
  */
 class Markdown {
-    /**
-     * @param parent The parent element of this element.
-     * If it is undefined then the element does not have a parent.
-     */
     constructor(parent) {
         /**
          * Holds the text to be displayed.
          */
         this.innerText = '';
         /**
-         * A reference to the root for this element.
+         * Tells render if the innerText is bold.
          */
-        this.root = this;
+        this.isBold = false;
         /**
-         * A reference to the parent of this element.
+         * Tells render if the innerText is italic
          */
-        this.parent = this;
+        this.isItalic = false;
+        /**
+         * Tells render if the innerText is strikethrough.
+         */
+        this.isStrike = false;
         /**
          * Collection of elements that are children of this element.
          */
         this.children = [];
         if (!parent)
             return;
-        this.root = parent.root;
-        this.parent = parent;
-        this.parent.addChild(this);
+        parent.addChild(this);
+    }
+    /**
+     * Creates a new Markdown old that is accessible inside a promise.
+     */
+    p() {
+        return new Promise(res => res(new Markdown(this)));
     }
     /**
      * Adds a child element to the children array.
@@ -51,16 +53,33 @@ class Markdown {
      */
     text(str, append = true) {
         if (append)
-            this.innerText += str;
+            this.innerText += this.innerText === '' ? str : ` ${str}`;
         else
             this.innerText = str;
         return this;
     }
     /**
-     * A getter that returns the needed text as Markdown.
+     * Toggles bold on and off for the entire innerText.
+     * @return this for chaining.
      */
-    get render() {
-        return `${this.innerText}`;
+    bold() {
+        this.isBold = !this.isBold;
+        return this;
+    }
+    /**
+     * Toggles italic on and off for the entire innerText.
+     * @return this for chaining.e
+     */
+    italic() {
+        this.isItalic = !this.isItalic;
+        return this;
+    }
+    /**
+     * Toggles strikethrough on and off for the entire innerText.
+     */
+    strike() {
+        this.isStrike = !this.isStrike;
+        return this;
     }
     /**
      * Created so that the element can be added to a string and automatically render.
@@ -71,16 +90,17 @@ class Markdown {
         return `${this.render}\n`;
     }
     /**
-     * Creates a new Markdown and returns a promise that returns the element.
+     * A getter that returns the needed text as Markdown.
      */
-    p() {
-        return new Promise(res => res(new Markdown(this)));
-    }
-    /**
-     * Returns a promise that returns a Header element.
-     */
-    header() {
-        return new Promise(res => res(new _1.Header(this)));
+    get render() {
+        let text = this.innerText;
+        if (this.isStrike)
+            text = `~~${text}~~`;
+        if (this.isItalic)
+            text = `*${text}*`;
+        if (this.isBold)
+            text = `**${text}**`;
+        return `${text}`;
     }
 }
-exports.Markdown = Markdown;
+exports.default = Markdown;

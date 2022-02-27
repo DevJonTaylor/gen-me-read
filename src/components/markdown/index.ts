@@ -1,11 +1,14 @@
-import { Markdown } from './markdown';
 import { Header } from './header';
-import { Link } from './link';
-import { Image } from './image';
+import { Image, Link, Markdown } from './image';
+import { List } from './list';
+
+declare type MarkdownTypes = Markdown | Header | Image | List | Link
 
 export {
-  Markdown,
   Header,
+  Image,
   Link,
-  Image
+  Markdown,
+  List,
+  MarkdownTypes
 }
