@@ -1,4 +1,4 @@
-import first from './questions/first'
+import { step1, step2 } from './steps'
 
 /**
  * TODO:  At least four license options and create a badge and the LICENSE document
@@ -7,4 +7,7 @@ import first from './questions/first'
  * TODO:  TOC should link to each section
  */
 
-first().then(console.log).catch(console.error)
+step1()
+  .then(step2)
+  .then(console.log)
+  .catch(console.error)
