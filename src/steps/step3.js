@@ -51,8 +51,6 @@ const render = () => {
 const sortSections = async sections => {
   const isFirstTime = isArray(sections)
 
-
-  if(!isFirstTime) console.log(sections)
   for(const section of isFirstTime ? sections : Object.keys(sections)) {
     switch(section) {
       case 'tableOfContents':
@@ -91,7 +89,6 @@ const sortSections = async sections => {
         break;
       case 'license':
         const licenseArray = await license(sections.license)
-        // console.log(licenseArray)
         readme.top += licenseArray[0]
         readme.license = licenseArray[1]
         break;
