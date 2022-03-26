@@ -8,7 +8,7 @@ const createHeaderLink = text => {
 }
 
 /**
- *
+ * This function adds a link for each section included and creates a Table Of Contents.
  * @param {ReadmeObject} sections
  * @returns {string}
  */

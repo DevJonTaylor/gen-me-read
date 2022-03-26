@@ -15,6 +15,12 @@ const licenses = [
   ['Eclipse Public License version 2.0', 'EPL-2.0'],
 ]
 
+/**
+ * This function creates a badge link.  It also creates a list question asking if the LICENSE file is inside the repo.
+ * If the LICENSE file is not included inside the repo then a direct link to the license template will be used.
+ * @param {string} license
+ * @returns {Promise<string>}
+ */
 const badge = async (license) => {
   const answers = await QFactory.list(
     'location',
@@ -30,6 +36,15 @@ const badge = async (license) => {
   return misc.link(shieldBadge, answers.location === 'yes' ? './LICENSE' : `https://opensource.org/licenses/${license}`)
 }
 
+/**
+ * This function creates a badge and the license section.
+ * If no argument is passed it returns nothing and adds a list question asking which license they are using.
+ * If none is selected an array with two empty strings will be returned.
+ * If a license is selected it will return an array.  The first item is just the badge to be included in with the
+ * Title/top section.  The second item will be the License section.
+ * @param {string} [license]
+ * @returns {Promise<Array<string>>}
+ */
 export default async function(license) {
   if(!license) {
     QFactory

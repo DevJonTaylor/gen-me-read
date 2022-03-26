@@ -44,7 +44,8 @@ const render = () => {
 }
 
 /**
- *
+ * If an array is received then it creates the questions to ask for content to each section included.
+ * If an object is passed then it will add these to the global object for the README file.
  * @param { ReadmeObject | Array<string> } sections
  * @returns void
  */
@@ -97,7 +98,7 @@ const sortSections = async sections => {
 }
 
 /**
- *
+ * Goes through the sections created and the content provided by the user to create each section of the README.
  * @param {{title: string, sections: Array<string>}} answers
  * @returns {Promise<string>}
  */

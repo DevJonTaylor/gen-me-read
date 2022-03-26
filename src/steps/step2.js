@@ -1,6 +1,9 @@
 import QFactory from '../../lib/Questions/QFactory'
 
-
+/**
+ * This function asks an input question for the title and a checkbox question for the sections to include.
+ * @returns {Promise<{title: string, sections: Array<string>}>}
+ */
 export default async function() {
   const answers = await QFactory
     .input('title', 'What is the name of your project?')
