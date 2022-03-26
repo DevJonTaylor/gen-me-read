@@ -27,7 +27,7 @@ const badge = async (license) => {
     `https://img.shields.io/badge/license-${encodeURIComponent(license.replaceAll('-', '--'))}-00ff00`,
     `${license} Badge`
   )
-  return misc.link(shieldBadge, answers.location === 'yes' ? './' : `https://opensource.org/licenses/${license}`)
+  return misc.link(shieldBadge, answers.location === 'yes' ? './LICENSE' : `https://opensource.org/licenses/${license}`)
 }
 
 export default async function(license) {
