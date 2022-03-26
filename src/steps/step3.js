@@ -86,7 +86,7 @@ const sortSections = async sections => {
       case 'email':
       case 'github':
         if(isFirstTime) questions()
-        else if(!readme.questions) readme.questions = questions(sections.github, sections.email)
+        else if(!readme.questions) readme.questions = questions(sections.email, sections.github)
         break;
       case 'license':
         const licenseArray = await license(sections.license)

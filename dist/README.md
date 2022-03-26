@@ -1,30 +1,32 @@
 
-# Blah
-[![MIT Badge](https://img.shields.io/badge/license-MIT-00ff00 "MIT Badge")](./)
+# README Generator
+[![MIT Badge](https://img.shields.io/badge/license-MIT-00ff00 "MIT Badge")](https://opensource.org/licenses/MIT)
 ## Table Of Contents
 * [Description](#description)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Tests](#tests)
 * [Contributing](#contributing)
 * [Questions](#questions)
 * [License](#license)
 
 ## Description
-asdasdasdasd
+A README generator to help streamline the projectd process.
 ## Installation
-asdasdqweascawsdqwfddasfasdf
+You can install my project by using the following command
+```bash
+git clone https://github.com/DevJonTaylor/gen-me-read.git
+```
 ## Usage
-asdasdqwdqwdqwd
-
-## Tests
-qweqweqweqwedasd
-
+You can use this project once everything is install by using the following command
+```bash
+npm start
+```
 ## Contributing
-123123qwedqwdasdcasda
+You can contribute to this project by creating a pull requests!  =)
 ## Questions
-For additional questions you can reach me * GitHub: [@jonnytest1101@icloud.com](https://github.com/jonnytest1101@icloud.com)
-* Email: [DevJonTaylor](mailto:DevJonTaylor)
+For additional questions you can reach me 
+* GitHub: [@DevJonTaylor](https://github.com/DevJonTaylor)
+* Email: [jonnytest1101@icloud.com](mailto:jonnytest1101@icloud.com)
 
 ## License
-[![MIT Badge](https://img.shields.io/badge/license-MIT-00ff00 "MIT Badge")](./)
+[![MIT Badge](https://img.shields.io/badge/license-MIT-00ff00 "MIT Badge")](https://opensource.org/licenses/MIT)

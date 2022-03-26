@@ -21,6 +21,6 @@ export default function(email, github) {
       'GitHub: ' + misc.link(`@${github}`, `https://github.com/${github}`),
       'Email: ' + misc.link(email, `mailto:${email}`)
     ])
-    return `${headers.h2('Questions')}For additional questions you can reach me ${contactList}`
+    return `${headers.h2('Questions')}For additional questions you can reach me \n${contactList}`
   }
 }
