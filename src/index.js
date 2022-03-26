@@ -1,4 +1,4 @@
-import { step1, step2 } from './steps'
+import { step1, step2, step3, step4 } from './steps'
 
 /**
  * TODO:  At least four license options and create a badge and the LICENSE document
@@ -9,5 +9,7 @@ import { step1, step2 } from './steps'
 
 step1()
   .then(step2)
+  .then(step3)
+  .then(step4)
   .then(console.log)
   .catch(console.error)
