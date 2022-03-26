@@ -16,7 +16,6 @@
   * [Dependancies](#dependancies)
   * [Clone](#clone)
   * [Zip](#zip)
-  * [Frontend Install](#frontend-install)
 * [Usage](#usage)
   * [Starting](#starting)
   * [Sections](#sections)
@@ -67,7 +66,7 @@ cd gen-me-read-main
 npm install
 ```
 
-## Usage/Examples
+## Usage
 You can see a full walkthrough [here](https://www.youtube.com/watch?v=MO-zx7zRsp0).  
 Once the project is install and you are in the folder you can run it by using this command
 ### Starting
