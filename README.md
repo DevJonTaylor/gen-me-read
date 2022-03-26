@@ -10,6 +10,19 @@
 
 
 ## Table Of Contents
+* [Description](#description)
+* [Roadmap](#roadmap)
+* [Installation](#installation)
+  * [Dependancies](#dependancies)
+  * [Clone](#clone)
+  * [Zip](#zip)
+  * [Frontend Install](#frontend-install)
+* [Usage](#usage)
+  * [Starting](#starting)
+  * [Sections](#sections)
+  * [Editor](#editor)
+* [Contact Me](#contact-me)
+* [License](#license)
 ## Description
 This was a neat project that allowed me to utilize a wrapper I
 previously created.  This wrapper is for Inquirer that is easily
@@ -57,7 +70,7 @@ npm install
 ## Usage/Examples
 You can see a full walkthrough [here](https://www.youtube.com/watch?v=MO-zx7zRsp0).  
 Once the project is install and you are in the folder you can run it by using this command
-### Start
+### Starting
 ```bash
 npm start
 ```
