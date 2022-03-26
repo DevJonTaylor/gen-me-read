@@ -1,18 +1,18 @@
 {
   "name": "readme-generator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple README generators.  The goal is to quickly create a README based on specific options selected on the cli.",
   "main": "index.js",
   "scripts": {
-    "watch": "nodemon index.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Jon Taylor",
   "license": "MIT",
   "dependencies": {
-    "inquirer": "^6.5.2"
-  },
-  "devDependencies": {
-    "jest": "^27.5.1"
+    "esm": "^3.2.25",
+    "gradient-string": "^2.0.0",
+    "inquirer": "^8.2.2",
+    "lodash": "^4.17.21",
+    "markdown-builder": "^0.9.0"
   }
 }
